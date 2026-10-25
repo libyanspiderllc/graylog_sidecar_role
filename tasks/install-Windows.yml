@@ -24,11 +24,13 @@
   notify: restart graylog-sidecar
 
 - name: Install graylog-sidecar service
-  ansible.builtin.win_command: "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install
+  ansible.builtin.win_command:
+    cmd: '"C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install'
   when: graylog_sidecar_installed.changed
 
 - name: Start graylog-sidecar service
-  ansible.builtin.win_command: "C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service start
+  ansible.builtin.win_command:
+    cmd: '"C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service start'
   when: graylog_sidecar_installed.changed
 
 - name: Download WinLogBeat installer
@@ -47,7 +49,8 @@
   when: winlogbeat_downloaded.changed
 
 - name: Install WinLogBeat service
-  ansible.builtin.win_command: "C:\Program Files\WinLogBeat\install-service-winlogbeat.ps1"
+  ansible.builtin.win_command:
+    cmd: '"C:\Program Files\WinLogBeat\install-service-winlogbeat.ps1"'
   when: winlogbeat_downloaded.changed
 
 - name: Download Filebeat installer
@@ -66,5 +69,6 @@
   when: filebeat_downloaded.changed
 
 - name: Install Filebeat service
-  ansible.builtin.win_command: "C:\Program Files\Filebeat\install-service-filebeat.ps1"
+  ansible.builtin.win_command:
+    cmd: '"C:\Program Files\Filebeat\install-service-filebeat.ps1"'
   when: filebeat_downloaded.changed
