@@ -57,12 +57,6 @@
     remote_src: yes
   when: winlogbeat_downloaded.changed
 
-- name: Install WinLogBeat service
-  ansible.builtin.win_command:
-    cmd: '"C:\Program Files\WinLogBeat\winlogbeat-9.5.5-windows-x86_64\install-service-winlogbeat.ps1"'
-  when: winlogbeat_downloaded.changed
-  ignore_errors: true
-
 - name: Download Filebeat installer
   ansible.builtin.win_get_url:
     url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.5.5-windows-x86_64.zip
@@ -77,9 +71,3 @@
     dest: C:\Program Files\Filebeat
     remote_src: yes
   when: filebeat_downloaded.changed
-
-- name: Install Filebeat service
-  ansible.builtin.win_command:
-    cmd: '"C:\Program Files\Filebeat\filebeat-9.5.5-windows-x86_64\install-service-filebeat.ps1"'
-  when: filebeat_downloaded.changed
-  ignore_errors: true
