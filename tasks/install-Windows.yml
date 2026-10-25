@@ -27,6 +27,7 @@
   ansible.builtin.win_command:
     cmd: '"C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install'
   when: graylog_sidecar_installed.changed
+  ignore_errors: true
 
 - name: Start graylog-sidecar service
   ansible.builtin.win_command:
@@ -52,6 +53,7 @@
   ansible.builtin.win_command:
     cmd: '"C:\Program Files\WinLogBeat\install-service-winlogbeat.ps1"'
   when: winlogbeat_downloaded.changed
+  ignore_errors: true
 
 - name: Download Filebeat installer
   ansible.builtin.win_get_url:
@@ -72,3 +74,4 @@
   ansible.builtin.win_command:
     cmd: '"C:\Program Files\Filebeat\install-service-filebeat.ps1"'
   when: filebeat_downloaded.changed
+  ignore_errors: true
