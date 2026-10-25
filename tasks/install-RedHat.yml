@@ -3,14 +3,14 @@
 
 - name: Download graylog-sidecar repository
   ansible.builtin.get_url:
-    url: https://packages.graylog2.org/repo/packages/graylog-sidecar-repository-1-4.noarch.rpm
-    dest: /tmp/graylog-sidecar-repository-1-4.noarch.rpm
+    url: https://packages.graylog2.org/repo/packages/graylog-sidecar-repository-1-5.noarch.rpm
+    dest: /tmp/graylog-sidecar-repository-1-5.noarch.rpm
     validate_certs: false
     force: false
 
 - name: Install graylog-sidecar repository
   ansible.builtin.yum:
-    name: /tmp/graylog-sidecar-repository-1-4.noarch.rpm
+    name: /tmp/graylog-sidecar-repository-1-5.noarch.rpm
     state: installed
     disable_gpg_check: true
 
