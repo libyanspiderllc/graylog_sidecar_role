@@ -52,7 +52,7 @@
 
 - name: Install WinLogBeat service
   ansible.builtin.win_command:
-    cmd: '"C:\Program Files\WinLogBeat\install-service-winlogbeat.ps1"'
+    cmd: '"C:\Program Files\WinLogBeat\winlogbeat-9.5.5-windows-x86_64\install-service-winlogbeat.ps1"'
   when: winlogbeat_downloaded.changed
   ignore_errors: true
 
@@ -73,6 +73,6 @@
 
 - name: Install Filebeat service
   ansible.builtin.win_command:
-    cmd: '"C:\Program Files\Filebeat\install-service-filebeat.ps1"'
+    cmd: '"C:\Program Files\Filebeat\filebeat-9.5.5-windows-x86_64\install-service-filebeat.ps1"'
   when: filebeat_downloaded.changed
   ignore_errors: true
