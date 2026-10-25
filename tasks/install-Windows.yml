@@ -23,6 +23,13 @@
     line: 'server_api_token: "{{ graylog_api_token }}"'
   notify: restart graylog-sidecar
 
+- name: Remove default collector tags
+  ansible.builtin.win_lineinfile:
+    path: C:\Program Files\Graylog\sidecar\sidecar.yml
+    line: 'tags: [ default ]'
+    state: absent
+  notify: restart graylog-sidecar
+
 - name: Install graylog-sidecar service
   ansible.builtin.win_command:
     cmd: '"C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service install'
