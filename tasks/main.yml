@@ -15,3 +15,7 @@
 - name: RedHat | Include customize tasks
   include_tasks: customize.yml
   when: ansible_os_family == "RedHat"
+
+- name: Windows | Include install tasks
+  include_tasks: install-Windows.yml
+  when: ansible_os_family == "Windows"
