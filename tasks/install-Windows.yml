@@ -33,6 +33,7 @@
   ansible.builtin.win_command:
     cmd: '"C:\Program Files\Graylog\sidecar\graylog-sidecar.exe" -service start'
   when: graylog_sidecar_installed.changed
+  ignore_errors: true
 
 - name: Download WinLogBeat installer
   ansible.builtin.win_get_url:
