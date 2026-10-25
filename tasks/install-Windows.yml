@@ -42,32 +42,32 @@
   when: graylog_sidecar_installed.changed
   ignore_errors: true
 
-- name: Download WinLogBeat installer
-  ansible.builtin.win_get_url:
-    url: https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-9.5.5-windows-x86_64.zip
-    dest: C:\Windows\Temp\winlogbeat.zip
-    validate_certs: false
-    force: false
-  register: winlogbeat_downloaded
+# - name: Download WinLogBeat installer
+#   ansible.builtin.win_get_url:
+#     url: https://artifacts.elastic.co/downloads/beats/winlogbeat/winlogbeat-9.5.5-windows-x86_64.zip
+#     dest: C:\Windows\Temp\winlogbeat.zip
+#     validate_certs: false
+#     force: false
+#   register: winlogbeat_downloaded
 
-- name: Extract WinLogBeat installer
-  ansible.builtin.win_unzip:
-    src: C:\Windows\Temp\winlogbeat.zip
-    dest: C:\Program Files\WinLogBeat
-    remote_src: yes
-  when: winlogbeat_downloaded.changed
+# - name: Extract WinLogBeat installer
+#   ansible.builtin.win_unzip:
+#     src: C:\Windows\Temp\winlogbeat.zip
+#     dest: C:\Program Files\WinLogBeat
+#     remote_src: yes
+#   when: winlogbeat_downloaded.changed
 
-- name: Download Filebeat installer
-  ansible.builtin.win_get_url:
-    url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.5.5-windows-x86_64.zip
-    dest: C:\Windows\Temp\filebeat.zip
-    validate_certs: false
-    force: false
-  register: filebeat_downloaded
+# - name: Download Filebeat installer
+#   ansible.builtin.win_get_url:
+#     url: https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-9.5.5-windows-x86_64.zip
+#     dest: C:\Windows\Temp\filebeat.zip
+#     validate_certs: false
+#     force: false
+#   register: filebeat_downloaded
 
-- name: Extract Filebeat installer
-  ansible.builtin.win_unzip:
-    src: C:\Windows\Temp\filebeat.zip
-    dest: C:\Program Files\Filebeat
-    remote_src: yes
-  when: filebeat_downloaded.changed
+# - name: Extract Filebeat installer
+#   ansible.builtin.win_unzip:
+#     src: C:\Windows\Temp\filebeat.zip
+#     dest: C:\Program Files\Filebeat
+#     remote_src: yes
+#   when: filebeat_downloaded.changed
